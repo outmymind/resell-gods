@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resell Gods - Own Your Hustle</title>
+  <script>
+    const password = prompt("Enter password to access Resell Gods:");
+    if (password !== "fucka9-5") {
+      document.write("<h1 style='color: white; text-align:center; margin-top: 20vh;'>Access Denied.</h1>");
+      throw new Error("Wrong password");
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-black text-white font-sans">
+  <div class="flex flex-col items-center justify-center min-h-screen px-4">
+    <img src="Untitled Project (1).png" alt="Resell Gods Logo" class="w-64 mb-6" />
+    <h1 class="text-3xl md:text-5xl font-bold mb-2 text-center">Resell Gods</h1>
+    <p class="text-xl text-gray-300 mb-8 text-center">Own Your Hustle</p>
+
+    <form class="w-full max-w-sm mb-10">
+      <div class="mb-4">
+        <input class="appearance-none w-full bg-gray-800 text-white border border-gray-600 rounded py-2 px-4 leading-tight focus:outline-none focus:ring" type="email" placeholder="Enter your email">
+      </div>
+      <button class="bg-white text-black font-bold py-2 px-4 rounded w-full hover:bg-gray-200" type="submit">Join the List</button>
+    </form>
+
+    <div class="w-full max-w-2xl">
+      <h2 class="text-2xl font-semibold mb-4">Digital Product Store</h2>
+      <div class="bg-gray-800 p-6 rounded-lg text-center">
+        <p class="mb-2">Store Coming Soon</p>
+        <!-- Replace this iframe with actual Payhip embed later -->
+        <div class="h-64 bg-gray-900 flex items-center justify-center rounded">
+          <span class="text-gray-500">[Payhip Store Embed Placeholder]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
