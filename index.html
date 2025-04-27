@@ -39,29 +39,30 @@
     <div id="products" class="w-full max-w-2xl fade-in locked">
       <h2 class="text-2xl font-semibold mb-4">Digital Product Store</h2>
 
-      <div class="bg-gray-800 p-6 rounded-lg text-center mb-6">
+      <form id="productForm1" class="bg-gray-800 p-6 rounded-lg text-center mb-6" action="https://payhip.com/b/EXAMPLE1" method="GET" target="_blank">
         <p class="mb-2">Example Product #1</p>
-        <select id="referral1" class="mb-4 bg-gray-700 text-white py-2 px-3 rounded">
+        <select name="ref" class="mb-4 bg-gray-700 text-white py-2 px-3 rounded">
           <option value="Robby">Robby</option>
           <option value="Jay">Jay</option>
           <option value="Daniel">Daniel</option>
           <option value="David">David</option>
         </select>
         <br>
-        <button onclick="buyProduct('https://payhip.com/b/EXAMPLE1', 'referral1')" class="bg-white text-black font-bold py-2 px-4 rounded hover:bg-gray-200">Buy Now</button>
-      </div>
+        <button type="submit" class="bg-white text-black font-bold py-2 px-4 rounded hover:bg-gray-200">Buy Now</button>
+      </form>
 
-      <div class="bg-gray-800 p-6 rounded-lg text-center">
+      <form id="productForm2" class="bg-gray-800 p-6 rounded-lg text-center" action="https://payhip.com/b/EXAMPLE2" method="GET" target="_blank">
         <p class="mb-2">Example Product #2</p>
-        <select id="referral2" class="mb-4 bg-gray-700 text-white py-2 px-3 rounded">
+        <select name="ref" class="mb-4 bg-gray-700 text-white py-2 px-3 rounded">
           <option value="Robby">Robby</option>
           <option value="Jay">Jay</option>
           <option value="Daniel">Daniel</option>
           <option value="David">David</option>
         </select>
         <br>
-        <button onclick="buyProduct('https://payhip.com/b/EXAMPLE2', 'referral2')" class="bg-white text-black font-bold py-2 px-4 rounded hover:bg-gray-200">Buy Now</button>
-      </div>
+        <button type="submit" class="bg-white text-black font-bold py-2 px-4 rounded hover:bg-gray-200">Buy Now</button>
+      </form>
+
     </div>
   </div>
 
@@ -74,12 +75,6 @@
       } else {
         alert("Incorrect password. Please try again.");
       }
-    }
-
-    function buyProduct(url, referralId) {
-      const referral = document.getElementById(referralId).value;
-      const finalUrl = url + `?ref=${encodeURIComponent(referral)}`;
-      window.open(finalUrl, '_blank');
     }
   </script>
 </body>
