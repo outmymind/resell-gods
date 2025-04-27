@@ -4,14 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resell Gods - Own Your Hustle</title>
-  <script>
-    const password = prompt("Enter password to access Resell Gods:");
-    if (password !== "fucka9-5") {
-      document.write("<h1 style='color: white; text-align:center; margin-top: 20vh;'>Access Denied.</h1>");
-      throw new Error("Wrong password");
-    }
-  </script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .fade-in {
+      animation: fadeIn 1s ease-in forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    .locked {
+      filter: blur(8px);
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body class="bg-black text-white font-sans">
   <div class="flex flex-col items-center justify-center min-h-screen px-4">
@@ -19,23 +27,60 @@
     <h1 class="text-3xl md:text-5xl font-bold mb-2 text-center">Resell Gods</h1>
     <p class="text-xl text-gray-300 mb-8 text-center">Own Your Hustle</p>
 
-    <form class="w-full max-w-sm mb-10">
-      <div class="mb-4">
-        <input class="appearance-none w-full bg-gray-800 text-white border border-gray-600 rounded py-2 px-4 leading-tight focus:outline-none focus:ring" type="email" placeholder="Enter your email">
+    <div id="password-section" class="w-full max-w-sm mb-10 text-center">
+      <div class="mb-4 relative">
+        <input id="password-input" class="appearance-none w-full bg-gray-800 text-white border border-gray-600 rounded py-2 px-4 leading-tight focus:outline-none focus:ring" type="password" placeholder="Enter Password">
+        <span class="absolute right-3 top-2.5 text-gray-400">🔒</span>
       </div>
-      <button class="bg-white text-black font-bold py-2 px-4 rounded w-full hover:bg-gray-200" type="submit">Join the List</button>
-    </form>
+      <button onclick="unlockStore()" class="bg-white text-black font-bold py-2 px-4 rounded w-full hover:bg-gray-200">Unlock</button>
+      <p id="access-message" class="mt-4 text-green-400 hidden">Access Granted ✅</p>
+    </div>
 
-    <div class="w-full max-w-2xl">
+    <div id="products" class="w-full max-w-2xl fade-in locked">
       <h2 class="text-2xl font-semibold mb-4">Digital Product Store</h2>
+
+      <div class="bg-gray-800 p-6 rounded-lg text-center mb-6">
+        <p class="mb-2">Example Product #1</p>
+        <select id="referral1" class="mb-4 bg-gray-700 text-white py-2 px-3 rounded">
+          <option value="Robby">Robby</option>
+          <option value="Jay">Jay</option>
+          <option value="Daniel">Daniel</option>
+          <option value="David">David</option>
+        </select>
+        <br>
+        <button onclick="buyProduct('https://payhip.com/b/EXAMPLE1', 'referral1')" class="bg-white text-black font-bold py-2 px-4 rounded hover:bg-gray-200">Buy Now</button>
+      </div>
+
       <div class="bg-gray-800 p-6 rounded-lg text-center">
-        <p class="mb-2">Store Coming Soon</p>
-        <!-- Replace this iframe with actual Payhip embed later -->
-        <div class="h-64 bg-gray-900 flex items-center justify-center rounded">
-          <span class="text-gray-500">[Payhip Store Embed Placeholder]</span>
-        </div>
+        <p class="mb-2">Example Product #2</p>
+        <select id="referral2" class="mb-4 bg-gray-700 text-white py-2 px-3 rounded">
+          <option value="Robby">Robby</option>
+          <option value="Jay">Jay</option>
+          <option value="Daniel">Daniel</option>
+          <option value="David">David</option>
+        </select>
+        <br>
+        <button onclick="buyProduct('https://payhip.com/b/EXAMPLE2', 'referral2')" class="bg-white text-black font-bold py-2 px-4 rounded hover:bg-gray-200">Buy Now</button>
       </div>
     </div>
   </div>
+
+  <script>
+    function unlockStore() {
+      const password = document.getElementById("password-input").value;
+      if (password === "fucka9-5") {
+        document.getElementById("products").classList.remove("locked");
+        document.getElementById("access-message").classList.remove("hidden");
+      } else {
+        alert("Incorrect password. Please try again.");
+      }
+    }
+
+    function buyProduct(url, referralId) {
+      const referral = document.getElementById(referralId).value;
+      const finalUrl = url + `?ref=${encodeURIComponent(referral)}`;
+      window.open(finalUrl, '_blank');
+    }
+  </script>
 </body>
 </html>
